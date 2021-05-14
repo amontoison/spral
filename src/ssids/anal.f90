@@ -1116,7 +1116,7 @@ end function calc_exec_alloc
 
        ! Build map for node indices
        do jj = rptr(node), rptr(node+1)-1
-         map(rlist(jj)) = int(jj-rptr(node)+1)
+          map(rlist(jj)) = int(jj-rptr(node)+1)
        end do
 
        ! Build nlist from A-lower transposed
@@ -1133,18 +1133,16 @@ end function calc_exec_alloc
 
        ! Build nlist from A-lower
        do j = sptr(node), sptr(node+1)-1
-         col = invp(j)
-         do ii = ptr(col), ptr(col+1)-1
-           k = abs(perm(row(ii))) ! row of L
-           if (k<j) cycle
-           nlist(2,pp) = (j-sptr(node))*blkm + map(k)
-           nlist(1,pp) = ii
-           pp = pp + 1
-         end do
-       end do
-     end do
-     nptr(nnodes+1) = pp
-    
+          col = invp(j)
+          do ii = ptr(col), ptr(col+1)-1
+            k = abs(perm(row(ii))) ! row of L
+            if (k .lt. j) cycle
+            nlist(2,pp) = (j-sptr(node))*blkm + map(k)
+            nlist(1,pp) = ii
+            pp = pp + 1
+          end do
+        end do
+      end do
+      nptr(nnodes+1) = pp
   end subroutine build_map
-
 end module spral_ssids_anal
