@@ -29,7 +29,7 @@
 using BinaryBuilder, Pkg
 
 name = "SPRAL"
-version = v"2023.11.20"
+version = v"2023.11.21"
 
 # Collection of sources required to complete build
 sources = [
