@@ -94,35 +94,35 @@ if host_machine.system() == 'linux'
   add_global_arguments('-DHAVE_SCHED_GETCPU', language : 'cpp')
 endif
 
-# OpenMP
-if fc.get_id() == 'nvidia_hpc'
-  add_global_arguments('-mp', language : 'fortran')
-  add_global_link_arguments('-mp', language : 'fortran')
-elif fc.get_id() == 'nagfor'
-  add_global_arguments('-openmp', language : 'fortran')
-  add_global_link_arguments('-openmp', language : 'fortran')
-elif fc.get_id() == 'gcc'
-  add_global_arguments('-fopenmp', language : 'fortran')
-  add_global_link_arguments('-fopenmp', language : 'fortran')
-elif fc.get_id() == 'intel' or fc.get_id() == 'intel-llvm'
-  add_global_arguments('-qopenmp', language : 'fortran')
-  add_global_link_arguments('-qopenmp', language : 'fortran')
-elif fc.get_id() == 'intel-cl' or fc.get_id() == 'intel-llvm-cl'
-  add_global_arguments('/Qopenmp', language : 'fortran')
-endif
+# # OpenMP
+# if fc.get_id() == 'nvidia_hpc'
+#   add_global_arguments('-mp', language : 'fortran')
+#   add_global_link_arguments('-mp', language : 'fortran')
+# elif fc.get_id() == 'nagfor'
+#   add_global_arguments('-openmp', language : 'fortran')
+#   add_global_link_arguments('-openmp', language : 'fortran')
+# elif fc.get_id() == 'gcc'
+#   add_global_arguments('-fopenmp', language : 'fortran')
+#   add_global_link_arguments('-fopenmp', language : 'fortran')
+# elif fc.get_id() == 'intel' or fc.get_id() == 'intel-llvm'
+#   add_global_arguments('-qopenmp', language : 'fortran')
+#   add_global_link_arguments('-qopenmp', language : 'fortran')
+# elif fc.get_id() == 'intel-cl' or fc.get_id() == 'intel-llvm-cl'
+#   add_global_arguments('/Qopenmp', language : 'fortran')
+# endif
 
-if cxx.get_id() == 'nvidia_hpc'
-  add_global_arguments('-mp', language : 'cpp')
-  add_global_link_arguments('-mp', language : 'cpp')
-elif cxx.get_id() == 'gcc' or cxx.get_id() == 'clang' or cxx.get_id() == 'clang-cl'
-  add_global_arguments('-fopenmp', language : 'cpp')
-  add_global_link_arguments('-fopenmp', language : 'cpp')
-elif cxx.get_id() == 'intel' or cxx.get_id() == 'intel-llvm'
-  add_global_arguments('-qopenmp', language : 'cpp')
-  add_global_link_arguments('-qopenmp', language : 'cpp')
-elif cxx.get_id() == 'intel-cl' or cxx.get_id() == 'intel-llvm-cl'
-  add_global_arguments('/Qopenmp', language : 'cpp')
-endif
+# if cxx.get_id() == 'nvidia_hpc'
+#   add_global_arguments('-mp', language : 'cpp')
+#   add_global_link_arguments('-mp', language : 'cpp')
+# elif cxx.get_id() == 'gcc' or cxx.get_id() == 'clang' or cxx.get_id() == 'clang-cl'
+#   add_global_arguments('-fopenmp', language : 'cpp')
+#   add_global_link_arguments('-fopenmp', language : 'cpp')
+# elif cxx.get_id() == 'intel' or cxx.get_id() == 'intel-llvm'
+#   add_global_arguments('-qopenmp', language : 'cpp')
+#   add_global_link_arguments('-qopenmp', language : 'cpp')
+# elif cxx.get_id() == 'intel-cl' or cxx.get_id() == 'intel-llvm-cl'
+#   add_global_arguments('/Qopenmp', language : 'cpp')
+# endif
 
 # Link flag for C++
 lstdcpp = '-lstdc++'
