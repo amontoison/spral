@@ -8,7 +8,7 @@ version = VersionNumber(ENV["SPRAL_RELEASE"])
 
 # Collection of sources required to complete build
 sources = [
-    GitSource("https://github.com/ralna/spral.git", ENV["SPRAL_COMMIT"])
+    GitSource("https://github.com/amontoison/spral.git", ENV["SPRAL_COMMIT"])
 ]
 
 # Bash recipe for building across all platforms
